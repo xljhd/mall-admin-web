@@ -65,7 +65,7 @@
         dialogVisible: false,
         useOss:true, //使用oss->true;使用MinIO->false
         ossUploadUrl:'http://macro-oss.oss-cn-shenzhen.aliyuncs.com',
-        minioUploadUrl:'http://localhost:8080/minio/upload',
+        minioUploadUrl:'http://localhost:8082/minio/upload',
       };
     },
     methods: {
@@ -86,6 +86,7 @@
         }
         return new Promise((resolve, reject) => {
           policy().then(response => {
+            console.log(response)
             _self.dataObj.policy = response.data.policy;
             _self.dataObj.signature = response.data.signature;
             _self.dataObj.ossaccessKeyId = response.data.accessKeyId;
